@@ -26,11 +26,13 @@ export PATH=$GOPATH/bin:$PATH
 
 echo "Install Gox"
 $GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
-
+echo "Install dep"
+$GO_BIN install -ldflags "-s -w" github.com/golang/dep/cmd/dep@latest
 cp -r $CWD $GO_SRC
 
-
-go mod init github.com/dinhbaouit/chashell
+dep ensure
+go mod init
+go mod tidy
 go mod vendor
 
 export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')

@@ -1,5 +1,6 @@
 CWD=$(pwd)
-install_banner "Install Golang latest version"
+apt-get install -y python2
+echo "Install Golang latest version"
 wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash
 
 GO_BIN="$HOME/.go/bin/go"
@@ -21,11 +22,16 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 cd CWD
-echo "Install Gox"
+echo "
+
+Gox"
 $GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
 
 go mod tidy
 go mod init
 go mod vendor
+
+export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')
+export DOMAIN_NAME=c.zsec.site
 
 make build-all

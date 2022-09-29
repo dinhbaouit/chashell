@@ -26,13 +26,13 @@ export PATH=$GOPATH/bin:$PATH
 echo "Install Gox"
 $GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
 
-cp -r CWD  GO_SRC
+cp -r $CWD $GO_SRC
 
 
 go mod init github.com/dinhbaouit/chashell
 go mod vendor
 
 export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')
-export DOMAIN_NAME=c.zsec.site
+export DOMAIN_NAME=test.zsec.site
 
 make build-all

@@ -4,7 +4,7 @@ echo "Install Golang latest version"
 wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash
 
 GO_BIN="$HOME/.go/bin/go"
-GO_SRC="$HOME/.go/src/"
+
 # in case the script fail
 [[ -f $GO_BIN ]] || GO_BIN=$(which go)
 echo -e "\033[1;32m[+] Detected go binary: $GO_BIN \033[0m"
@@ -15,6 +15,7 @@ GOROOT=$HOME/.go
 PATH=$GOROOT/bin:$PATH
 GOPATH=$HOME/go
 PATH=$GOPATH/bin:$PATH
+GO_SRC="$GOPATH/src/"
 
 export GO_BIN="$HOME/.go/bin/go"
 export GOROOT=$HOME/.go

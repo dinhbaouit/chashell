@@ -1,4 +1,3 @@
-
 SERVER_SOURCE=./cmd/server
 CLIENT_SOURCE=./cmd/shell
 LDFLAGS="-X main.targetDomain=$(DOMAIN_NAME) -X main.encryptionKey=$(ENCRYPTION_KEY) -s -w"
@@ -8,8 +7,6 @@ CLIENT_BINARY=chashell
 SERVER_BINARY=chaserv
 TAGS=debug
 
-## OSARCH = "linux/amd64 linux/386 linux/arm windows/amd64 windows/386 darwin/amd64 darwin/386"
-## No need for darwin
 OSARCH = "linux/amd64 linux/386 linux/arm windows/amd64 windows/386"
 
 .DEFAULT: help

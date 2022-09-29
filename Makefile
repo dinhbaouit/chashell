@@ -8,7 +8,9 @@ CLIENT_BINARY=chashell
 SERVER_BINARY=chaserv
 TAGS=release
 
-OSARCH = "linux/amd64 linux/386 linux/arm windows/amd64 windows/386 darwin/amd64 darwin/386"
+## OSARCH = "linux/amd64 linux/386 linux/arm windows/amd64 windows/386 darwin/amd64 darwin/386"
+## No need for darwin
+OSARCH = "linux/amd64 linux/386 linux/arm windows/amd64 windows/386"
 
 .DEFAULT: help
 

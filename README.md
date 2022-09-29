@@ -46,15 +46,15 @@ Build all the binaries (adjust the domain_name and the encryption_key to your ne
 
 
 ```
-$ export ENCRYPTION_KEY=$(python -c 'from os import urandom; print(urandom(32).encode("hex"))')
-$ export DOMAIN_NAME=c.sysdream.com
+$ export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')
+$ export DOMAIN_NAME=c.zsec.site
 $ make build-all
 ```
 
 Build for a specific platform:
 
 ```
-$ make build-all OSARCH="linux/arm"
+$ make build-all OSARCH="linux/amd64"
 ```
 
 Build only the server:
@@ -75,8 +75,8 @@ $ make build-client
 * Set a DNS record like this : 
 
 ```
-chashell 300 IN A [SERVERIP]
-c 300 IN NS chashell.[DOMAIN].
+ns1 300 IN A [SERVERIP]
+test 300 IN NS ns1.[DOMAIN].
 ```
 
 #### Usage

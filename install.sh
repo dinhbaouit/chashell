@@ -1,3 +1,4 @@
+CWD=$(pwd)
 install_banner "Install Golang latest version"
 wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash
 
@@ -18,5 +19,10 @@ export GOROOT=$HOME/.go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+
+cd CWD
+echo "Install Gox"
+$GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
+
 
 make build-all

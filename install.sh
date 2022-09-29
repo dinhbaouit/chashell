@@ -24,5 +24,8 @@ cd CWD
 echo "Install Gox"
 $GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
 
+go mod tidy
+go mod init
+go mod vendor
 
 make build-all

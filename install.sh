@@ -42,7 +42,6 @@ dep ensure
 
 echo -e "\033[1;32m[+] Run go mod vendor \033[0m"
 go mod vendor
-go mod tidy
 
 export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')
 export DOMAIN_NAME=c.zsec.site

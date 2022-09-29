@@ -30,6 +30,8 @@ echo "Install dep"
 $GO_BIN install -ldflags "-s -w" github.com/golang/dep/cmd/dep@latest
 cp -r $CWD $GO_SRC
 
+cd "$GO_SRC/chashell/"
+
 dep ensure
 go mod init
 go mod tidy

@@ -34,7 +34,7 @@ cd "$GO_SRC/chashell/"
 
 dep ensure
 go mod init
-go mod tidy
+# go mod tidy
 go mod vendor
 
 dep ensure

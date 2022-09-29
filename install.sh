@@ -24,26 +24,27 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 
-echo "Install Gox"
+echo -e "\033[1;32m[+] Install Gox \033[0m"
 $GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
-echo "Install dep"
+echo -e "\033[1;32m[+] Install Dep \033[0m"
 $GO_BIN install -ldflags "-s -w" github.com/golang/dep/cmd/dep@latest
 cp -r $CWD $GO_SRC
 
 cd "$GO_SRC/chashell/"
 
-echo "\033[1;32m[+] Run Dep ensure \033[0m"
+echo -e "\033[1;32m[+] Run Dep ensure \033[0m"
 dep ensure
-echo "\033[1;32m[+] Run go mod init \033[0m"
+echo -e "\033[1;32m[+] Run go mod init \033[0m"
 go mod init
-echo "\033[1;32m[+] Run Dep ensure \033[0m"
+echo -e "\033[1;32m[+] Run Dep ensure \033[0m"
 
 dep ensure
-# go mod tidy
-echo "\033[1;32m[+] Run go mod vendor \033[0m"
+
+echo -e "\033[1;32m[+] Run go mod vendor \033[0m"
 go mod vendor
+go mod tidy
 
 export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')
-export DOMAIN_NAME=test.zsec.site
+export DOMAIN_NAME=c.zsec.site
 
 make build-all

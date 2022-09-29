@@ -4,6 +4,7 @@ echo "Install Golang latest version"
 wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash
 
 GO_BIN="$HOME/.go/bin/go"
+GO_SRC="$HOME/.go/src/"
 # in case the script fail
 [[ -f $GO_BIN ]] || GO_BIN=$(which go)
 echo -e "\033[1;32m[+] Detected go binary: $GO_BIN \033[0m"
@@ -21,13 +22,14 @@ export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
-cd CWD
-echo "
 
-Gox"
+echo "Install Gox"
 $GO_BIN install -ldflags "-s -w" github.com/mitchellh/gox@latest
 
-go mod init
+cp -r CWD  GO_SRC
+
+
+go mod init github.com/dinhbaouit/chashell
 go mod vendor
 
 export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')

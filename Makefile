@@ -6,7 +6,7 @@ GCFLAGS="all=-trimpath=$GOPATH"
 
 CLIENT_BINARY=chashell
 SERVER_BINARY=chaserv
-TAGS=release
+TAGS=debug
 
 ## OSARCH = "linux/amd64 linux/386 linux/arm windows/amd64 windows/386 darwin/amd64 darwin/386"
 ## No need for darwin

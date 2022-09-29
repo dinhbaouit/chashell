@@ -32,12 +32,17 @@ cp -r $CWD $GO_SRC
 
 cd "$GO_SRC/chashell/"
 
+echo "\033[1;32m[+] Run Dep ensure \033[0m"
 dep ensure
+echo "\033[1;32m[+] Run go mod init \033[0m"
 go mod init
-# go mod tidy
-go mod vendor
+echo "\033[1;32m[+] Run Dep ensure \033[0m"
 
 dep ensure
+# go mod tidy
+echo "\033[1;32m[+] Run go mod vendor \033[0m"
+go mod vendor
+
 export ENCRYPTION_KEY=$(python2 -c 'from os import urandom; print(urandom(32).encode("hex"))')
 export DOMAIN_NAME=test.zsec.site
 

